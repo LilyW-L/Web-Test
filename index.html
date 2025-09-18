@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>THE EAVE</title>
+
+  <!-- Raleway font -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    html, body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background-color: #000;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(20,20,20,0.45);
+      opacity: 0;
+      transition: opacity 300ms ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero:hover::after,
+    .hero:focus-within::after {
+      opacity: 1;
+    }
+
+    @media (hover: none) {
+      .hero::after { opacity: 0 !important; }
+    }
+
+    .bg-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero__brand {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: white;
+      z-index: 3;
+      font-size: clamp(0.9rem, 2vw, 1.25rem);
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .content {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: white;
+      z-index: 3;
+      padding: 0 1rem;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .content h1 {
+      margin: 0;
+      font-weight: 700;
+      font-size: clamp(1.5rem, 6vw, 3rem);
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .content p {
+      margin-top: 1rem;
+      font-weight: 400;
+      font-size: clamp(0.75rem, 2.5vw, 1rem);
+      color: #d0d0d0;
+      line-height: 1.5;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .divider {
+      width: min(60%, 320px);
+      height: 1px;
+      background: #cfcfcf;
+      opacity: 0.5;
+      margin: 1rem auto;
+      border: 0;
+    }
+
+    .gallery {
+      position: absolute;
+      top: 45%;
+      left: 0;
+      z-index: 3;
+      width: 90%;
+      max-width: 1200px;
+      text-align: left;
+      padding-left: 5%;
+    }
+
+    .gallery img {
+      width: 30%;
+      display: block;
+      float: left;
+      clear: both;
+      margin-top: 10px;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      opacity: 0;
+      transform-origin: center center;
+      transition:
+        opacity 500ms ease,
+        transform 400ms ease;
+    }
+
+    .gallery img:nth-of-type(1) {
+      margin-top: -480px;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery img:nth-of-type(2) {
+      margin-top: -30px;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery img.reveal.in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .gallery img.reveal.in {
+      opacity: 0.4;
+    }
+
+    .gallery img.reveal.in:hover {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1.50);
+    }
+
+    .reveal {
+      transform: translateY(24px) scale(0.98);
+      will-change: opacity, transform;
+    }
+
+    .reveal[data-reveal="fade-left"]   { transform: translateX(24px); }
+    .reveal[data-reveal="fade-left"].in { transform: translateX(0); }
+    .reveal[data-reveal="scale"]   { transform: scale(0.92); }
+    .reveal[data-reveal="scale"].in { transform: scale(1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal,
+      .reveal.in {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content { top: 14%; }
+      .gallery { top: 55%; padding-left: 0; }
+      .gallery img {
+        float: none;
+        clear: none;
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        margin-top: 0;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      .content { top: 18%; }
+      .gallery { top: 50%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <div class="hero__brand">WANLU LIU</div>
+
+    <img class="bg-image" src="Opening GIF2.gif" alt="Background">
+
+    <div class="content">
+      <h1>THE EAVE</h1>
+      <hr class="divider" />
+      <p>The Eave is a metropolitan shelter designed to address the vulnerabilities of dense cities like New York, whose extreme infrastructure and population density were exposed during the 2020 pandemic. Serving dual functions, it operates as a regular facility in normal times and expands above ground during emergencies to provide healthcare, living space, and education programs for displaced residents. Inspired by the form of a protective umbrella, The Eave relieves overcrowded hospitals, prioritizes those in need, and supports long-term recovery by helping residents reenter the workforce—transforming individual shelter into city-scale protection.</p>
+    </div>
+
+    <section class="gallery">
+      <img class="reveal" data-reveal="fade-up" src="Image 1.png" alt="Placeholder 1">
+      <img class="reveal" data-reveal="scale" src="Image 2.png" alt="Placeholder 2">
+      <img class="reveal" data-reveal="fade-left" src="Image 3.png" alt="Placeholder 3">
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      if (!('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+        return;
+      }
+
+      const els = document.querySelectorAll('.reveal');
+
+      const setStagger = (el, index) => {
+        const base = 80;
+        el.style.transitionDelay = (index * base) + 'ms';
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target;
+          if (entry.isIntersecting) {
+            el.classList.add('in');
+            observer.unobserve(el);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.15
+      });
+
+      els.forEach((el, i) => {
+        setStagger(el, i);
+        observer.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>
